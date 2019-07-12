@@ -1,4 +1,4 @@
-###  Question 26： Remove Duplicates from Sorted Array
+###  Question 26&80： Remove Duplicates from Sorted Array
 ---
 Given a sorted array *nums* , remove the duplicates in-place such that each element appear only once and return the new length.
 
@@ -45,4 +45,36 @@ class Solution {
 ```
 
 **Note:** This question is similar with question 27. In order to deal with this question, we need two point **n** and **i** to operate array. The variable **i** means there are **i** nums has been selected. The variable **n** start with i + 1 and move to right 1 index when nums[i] >= nums[n].If nums[i] < nums[n], we copy the value of nums[n] to nums[i+1] and make i plus 1. Because the array has been sorted. The arrays less than **i** is what we want.
+
+
+
+#### Question 80 : what if we remove the duplicates in-place such that duplicates appeared at most twice(or n times) and return the new length.
+
+**Example  :**
+
+```
+Given nums = [1,1,1,2,2,3],
+
+Your function should return length = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.
+
+It doesn't matter what you leave beyond the returned length.
+```
+
+**Solution :**
+
+```java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int i = 0;
+        for(int n : nums)
+        {
+            if(i < 2 || n > nums[i-2])
+            {
+                nums[i++] = n;
+            }
+        }
+        return i;
+    }
+}
+```
 
