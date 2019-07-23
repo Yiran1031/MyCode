@@ -23,7 +23,7 @@ Input: ["H","a","n","n","a","h"]
 Output: ["h","a","n","n","a","H"]
 ```
 
-**Solution :**
+**Solution 1:**
 
 ```java
 class Solution {
@@ -38,6 +38,28 @@ class Solution {
             end--;
             front++;
         }
+    }
+}
+```
+
+**Solution 2 : Recursion**
+
+```java
+class Solution {
+    public void reverseString(char[] s) {
+        if(s.length <= 1)
+            return;
+        reverse(s,0,s.length-1);
+    }
+    
+    public void reverse(char[] c, int i, int j)
+    {
+        if(i > j)
+            return;
+        char temp = c[j];
+        c[j] = c[i];
+        c[i] = temp;
+        reverse(c,i+1,j-1);
     }
 }
 ```
